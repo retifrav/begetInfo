@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="begetInfo.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="request_sites" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://api.beget.ru/api/domain/getList?login=LOGINTEMPLATE&amp;passwd=PASSWORDTEMPLATE&amp;output_format=json</Value>
+    </Setting>
+    <Setting Name="request_siteLoad" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://api.beget.ru/api/stat/getSiteLoad?login=LOGINTEMPLATE&amp;passwd=PASSWORDTEMPLATE&amp;output_format=json&amp;input_format=json&amp;input_data={%22site_id%22:SITEIDTEMPLATE}</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
