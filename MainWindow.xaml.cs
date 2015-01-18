@@ -41,32 +41,16 @@ namespace begetInfo
             // очистка предыдущих результатов
             tb_sites_rez.Clear();
 
-            WebRequest webRequest = WebRequest.Create(
+            string answer = sendRequest(
                 Properties.Settings.Default.request_sites
                     .Replace("LOGINTEMPLATE", tb_login.Text.Trim())
                     .Replace("PASSWORDTEMPLATE", tb_password.Password.Trim())
-                );
-            WebResponse webResponse = webRequest.GetResponse();
-            string answer = new StreamReader(webResponse.GetResponseStream()).ReadToEnd();
+                    );
 
             // ответ beget.ru в формате JSON
             dynamic parsedJSON = JsonConvert.DeserializeObject(answer);
-
-            // если статус ответа "ошибка"
-            string status = ((string)parsedJSON.status).Trim();
-            if (status != "success")
-            {
-                MessageBox.Show(
-                    string.Format("Ответ с beget.ru:{0}{1}",
-                        Environment.NewLine,
-                        ((string)parsedJSON.error_text).Trim()
-                        ),
-                    "Ошибка при выполнении запроса",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error
-                    );
-                return;
-            }
+            // сообщения об ошибках выдаются внутри этого метода, так что достаточно просто выйти
+            if (!checkAnswer(parsedJSON)) { return; }
 
             StringBuilder rez = new StringBuilder();
 
@@ -125,6 +109,54 @@ namespace begetInfo
         private void save_clicked(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        /// <summary>
+        /// Отправка запроса к API
+        /// </summary>
+        /// <param name="request">веб-запрос</param>
+        /// <returns>ответ на запрос</returns>
+        private string sendRequest(string request)
+        {
+            WebRequest webRequest = WebRequest.Create(request);
+            WebResponse webResponse = webRequest.GetResponse();
+            string answer = new StreamReader(webResponse.GetResponseStream()).ReadToEnd();
+
+            return answer;
+        }
+
+        private bool checkAnswer(dynamic parsedJSON)
+        {
+            // проверяем выполнение запроса
+            string status_request = ((string)parsedJSON.status).Trim();
+            if (status_request != "success")
+            {
+                MessageBox.Show(
+                    string.Format("Ответ с beget.ru:{0}{1}",
+                        Environment.NewLine,
+                        ((string)parsedJSON.error_text).Trim()
+                        ),
+                    "Ошибка при выполнении запроса",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                    );
+                return false;
+            }
+            
+            // проверяем ответ
+            string status_answer = ((string)parsedJSON.answer.status).Trim();
+            if (status_answer != "success")
+            {
+                MessageBox.Show(
+                    "В ответе на запроса содержатся ошибки (отрицательный результат запроса).",
+                    "Ошибка в ответе",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                    );
+                return false;
+            }
+
+            return true;
         }
     }
 }
