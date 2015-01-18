@@ -5,11 +5,29 @@
         ResizeMode="CanMinimize">
     <Grid Margin="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" UseLayoutRounding="False">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="35" />
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+        <Menu Grid.Row="0" IsMainMenu="True" Margin="-5 -5 -5 0">
+            <MenuItem Header="Информер">
+                <MenuItem Name="mn_save" Header="Сохранить логин и пароль" Click="save_clicked">
+                    <!--<MenuItem.Icon>
+                        <Image Source="/reses/save.ico" Width="16"></Image>
+                    </MenuItem.Icon>-->
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Выход" Click="shutdownApp">
+                    <!--<MenuItem.Icon>
+                        <Image Source="/reses/exit.ico" Width="16"></Image>
+                    </MenuItem.Icon>-->
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="?" Click="showAbout"/>
+        </Menu>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Margin="0 5 0 0">
             <Label Margin="2" Content="Логин:" HorizontalAlignment="Right"/>
             <TextBox Name="tb_login" Margin="2" VerticalContentAlignment="Center"
                      HorizontalContentAlignment="Center" Width="150" Text=""></TextBox>
@@ -18,7 +36,7 @@
                      HorizontalContentAlignment="Center" Width="300" Password=""></PasswordBox>
         </StackPanel>
         
-        <TabControl Grid.Row="1" Grid.Column="0" Margin="0 10 0 0">
+        <TabControl Grid.Row="2" Grid.Column="0" Margin="0 10 0 0">
             <TabItem Header="Ваши сайты">
                 <Grid Margin="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                       UseLayoutRounding="False">

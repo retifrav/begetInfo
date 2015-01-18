@@ -1,0 +1,68 @@
+﻿<Window x:Class="begetInfo.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="О приложении" Height="354" Width="386" ResizeMode="NoResize" SizeToContent="Height">
+    <Grid>
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" HorizontalAlignment="Right">
+                <Image Source="reses/info.png"/>
+            </Label>
+            <Label Grid.Row="0" Grid.Column="0" Content="Версия:" FontWeight="Bold" HorizontalAlignment="Right"/>
+            <Label Grid.Row="0" Grid.Column="1" Name="vers" Grid.ColumnSpan="2" />
+            <Label Grid.Row="1" Grid.Column="0" Content="Лицензия:" FontWeight="Bold" HorizontalAlignment="Right"/>
+            <Label Grid.Row="1" Grid.Column="1" Content="MIT" Grid.ColumnSpan="2" />
+            <Label Grid.Row="2" Grid.Column="0" Content="Репозиторий:" FontWeight="Bold" HorizontalAlignment="Right"/>
+            <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+                <TextBlock Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
+                <Hyperlink NavigateUri="https://github.com/retifrav/begetInfo" RequestNavigate="openLink">
+                    GitHub
+                </Hyperlink>
+                </TextBlock>
+            </Label>
+            <Label Grid.Row="3" Grid.Column="0" Content="Автор:" FontWeight="Bold" HorizontalAlignment="Right"/>
+            <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
+                <TextBlock>
+                retif (<Hyperlink Name="email" NavigateUri="mailto:retifrav@gmail.com" RequestNavigate="openLink" MouseRightButtonDown="copyEmail">
+                retifrav@gmail.com</Hyperlink>)
+                </TextBlock>
+            </Label>
+            <TabControl Grid.ColumnSpan="3" Grid.Row="4" Margin="0 10 0 0">
+                <TabItem Header="Описание">
+                    <TextBlock Margin="5" TextWrapping="Wrap">
+                    Приложение для получения информации по сайтам на вашем аккаунте у хостера
+                    Бегет (beget.ru) посредством веб-запросов через API хостера.
+                    <LineBreak/><LineBreak/>
+                    Для работы приложения необходим логин и пароль от вашего аккаунта (с которым
+                    вы заходите на cp.beget.ru). Данная информация используется только для запросов
+                    к API и больше никуда не передаётся. Вы можете убедиться в этом, изучив исходники
+                    приложения, которые находятся в общедоступном репозитории, который указан выше.
+                    </TextBlock>
+                </TabItem>
+                <TabItem Header="Стороннее ПО">
+                    <TextBlock Margin="5" TextWrapping="Wrap">
+                    Приложение написано на C#, WPF в Visual Studio 2013 (если это важно)
+                    на платформе .NET 4.5.1.
+                    <LineBreak/><LineBreak/>
+                    Для работы с JSON используется библиотка <Hyperlink NavigateUri="https://www.nuget.org/packages/Newtonsoft.Json/"
+                    RequestNavigate="openLink">Json.NET</Hyperlink>
+                    <LineBreak/><LineBreak/>
+                    Также я позаимствовал некоторые (все) иконки с ресурса <Hyperlink NavigateUri="https://www.iconfinder.com/"
+                    RequestNavigate="openLink">Iconfinder</Hyperlink>.
+                    </TextBlock>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Window>

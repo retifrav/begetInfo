@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -26,6 +27,13 @@ namespace begetInfo
         public MainWindow()
         {
             InitializeComponent();
+
+            this.Closing += windowClosing;
+        }
+
+        public void windowClosing(object sender, CancelEventArgs e)
+        {
+            if (!checkBeforeExit()) { e.Cancel = true; }
         }
 
         private void btn_sites_Click(object sender, RoutedEventArgs e)
@@ -77,6 +85,46 @@ namespace begetInfo
             }
 
             tb_sites_rez.Text = rez.ToString();
+        }
+
+        /// <summary>
+        /// Окно "О программе"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void showAbout(object sender, RoutedEventArgs e)
+        {
+            About about = new About();
+            about.ShowDialog();
+        }
+
+        private bool checkBeforeExit()
+        {
+            MessageBoxResult what2do = MessageBox.Show(
+                "Завершить работу приложения?",
+                "Завершение работы",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question
+                );
+            if (what2do == MessageBoxResult.Yes) { return true; } else { return false; }
+        }
+
+        /// <summary>
+        /// Выход из приложения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void shutdownApp(object sender, RoutedEventArgs e)
+        {
+            if (checkBeforeExit())
+            {
+                App.Current.Shutdown(0);
+            }
+        }
+
+        private void save_clicked(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
