@@ -25,8 +25,8 @@ namespace begetInfo.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://api.beget.ru/api/domain/getList?login=LOGINTEMPLATE&passwd=PASSWORDTEMPLA" +
-            "TE&output_format=json")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://api.beget.ru/api/site/getList?login=LOGINTEMPLATE&passwd=PASSWORDTEMPLATE" +
+            "&output_format=json")]
         public string request_sites {
             get {
                 return ((string)(this["request_sites"]));
@@ -39,14 +39,49 @@ namespace begetInfo.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://api.beget.ru/api/stat/getSiteLoad?login=LOGINTEMPLATE&passwd=PASSWORDTEMP" +
-            "LATE&output_format=json&input_format=json&input_data={%22site_id%22:SITEIDTEMPLA" +
-            "TE}")]
+            "LATE&output_format=json&input_format=json&input_data={\'site_id\':SITEIDTEMPLATE}")]
         public string request_siteLoad {
             get {
                 return ((string)(this["request_siteLoad"]));
             }
             set {
                 this["request_siteLoad"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string login {
+            get {
+                return ((string)(this["login"]));
+            }
+            set {
+                this["login"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string password {
+            get {
+                return ((string)(this["password"]));
+            }
+            set {
+                this["password"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string defaultSiteID {
+            get {
+                return ((string)(this["defaultSiteID"]));
+            }
+            set {
+                this["defaultSiteID"] = value;
             }
         }
     }
