@@ -55,8 +55,7 @@
                 </TabItem>
                 <TabItem Header="Стороннее ПО">
                     <TextBlock Margin="5" TextWrapping="Wrap">
-                    Приложение написано на C#, WPF в Visual Studio 2013 (если это важно)
-                    на платформе .NET 4.5.1.
+                    Приложение написано на C#, WPF в Visual Studio 2013 (версия .NET 4.5.1).
                     <LineBreak/><LineBreak/>
                     Для работы с JSON используется библиотка <Hyperlink NavigateUri="https://www.nuget.org/packages/Newtonsoft.Json/"
                     RequestNavigate="openLink">Json.NET</Hyperlink>

@@ -155,10 +155,10 @@ namespace begetInfo
         /// <param name="e"></param>
         private void shutdownApp(object sender, RoutedEventArgs e)
         {
-            if (checkBeforeExit())
-            {
+            //if (checkBeforeExit())
+            //{
                 App.Current.Shutdown(0);
-            }
+            //}
         }
 
         private void save_clicked(object sender, RoutedEventArgs e)

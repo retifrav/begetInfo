@@ -5,19 +5,19 @@
         ResizeMode="CanMinimize" FontSize="13">
     <Grid Margin="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" UseLayoutRounding="False">
         <Grid.RowDefinitions>
-            <RowDefinition Height="15" />
+            <RowDefinition Height="20" />
             <RowDefinition Height="40" />
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Menu Grid.Row="0" IsMainMenu="True" Margin="-5 -5 -5 -5">
             <MenuItem Header="Информер" Padding="5">
-                <MenuItem Name="mn_save" Header="Сохранить логин, пароль и сайт по умолчанию" Click="save_clicked">
+                <!--<MenuItem Name="mn_save" Header="Сохранить логин, пароль и сайт по умолчанию" Click="save_clicked">
                     <MenuItem.Icon>
                         <Image Source="/reses/save.ico" Width="16"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <Separator/>
+                <Separator/>-->
                 <MenuItem Header="Выход" Click="shutdownApp">
                     <MenuItem.Icon>
                         <Image Source="/reses/exit.ico" Width="16"></Image>
