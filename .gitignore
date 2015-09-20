@@ -1,5 +1,8 @@
 obj/
-bin/[Dd]ebug/
-_sln/packages/
-[Tt]humbs.db
+bin/[Dd]ebug
+_sln/.vs
+_sln/packages
 *.vshost.*
+*.pdb
+*.suo
+Thumbs.db
